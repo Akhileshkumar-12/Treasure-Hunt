@@ -1,0 +1,191 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    } 
+    
+    body {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.329), rgba(0, 0, 0, 0.219)), url(1.jpg);
+        background-position: center;
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        /* height: 100vh; */
+    }
+
+    .heading{
+        padding: 10px;
+    }
+    #img{
+        width: 7vw;
+        height: 7vw;
+        margin-bottom: 1vw;
+        margin-right: 20px;
+      
+    }
+    .heading h1 {
+        text-transform: uppercase;
+        font-size: 7vw;
+        letter-spacing: 0.2em;
+        color: rgb(145, 255, 0);
+        font-family: 'Pirata One', cursive;
+        line-height: 1em;
+        /* padding: 4vw 0 3vw 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; */
+        align-items: center;
+    }
+    @media only screen and (max-width: 768px) {
+        .heading h1 {
+            font-size: 2.6rem;
+        }
+    }
+    .box {
+        background: rgba(16, 15, 15, 0.858);
+        box-shadow: 10px -15px 5px rgba(0, 0, 0, 0.651);
+        display: flex;
+        flex-direction: column;
+        width:95vw;
+        /* max-height: 80vh; */
+        
+        max-width:1200px;
+        /* margin-top: 5vh; */
+        padding: 20px;
+    }
+     
+    .score{
+        font-weight: bold;
+    }
+    .time{
+        padding: 5px;
+        background-color: beige;
+        border: chartreuse;
+        border-radius: 5px;
+        text-align: end;
+        margin-left: 20px;
+        font-weight: bold;
+
+    }
+    .title {
+        border-bottom: 1px rgb(0, 0, 0);
+        color: rgb(244, 240, 240);
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+        font-weight: 600;
+        font-size: 24px;
+    }
+    
+    .header {
+        margin-bottom: 30px;
+        /* display: flex;
+        justify-content: space-between; */
+    }
+    /* .ul-left{
+        text-align: left;
+    
+    }
+    .ul-right{
+        text-align: right;
+        align-content: flex-end;
+    }*/
+     .inl-box{
+        display:inline-block ;
+    } 
+    .scoreBox,
+    #countdown {
+        border-radius: 100px;
+        padding: 10px 15px;
+        background-color: rgb(161, 234, 72);
+        border: 1px solid rgb(0, 0, 0);
+    }
+    
+    .quiz_body {
+        background-color: #b0b8a7;
+    }
+    
+    #questions {
+        padding: 20px;
+    }
+    
+    h5 {
+        /* width: 400px; */
+        background-color: rgb(156, 196, 105);
+        margin-bottom: 15px;
+        padding: 10px 15px;
+        border-radius: 80px;
+        border: 2px solid #45971f;
+        transition: 0.4s all;
+    }
+    
+    .option_group {
+        list-style-type: none;
+        margin: 30px 0;
+    }
+    
+    .option {
+        display: block;
+        /* width: 250px; */
+        background-color: rgb(183, 219, 136);
+        border: 2px solid #45971f;
+        margin-bottom: 20px;
+        padding: 10px 15px;
+        border-radius: 80px;
+        transition: 0.4s all;
+    }
+    
+    .option:hover {
+        cursor: pointer;
+        border: 2px solid #45971f;
+        color: #020202;
+    }
+    
+    .option.active {
+        background-color: #71cf46;
+        color: rgb(2, 2, 2);
+    }
+    
+    ul {
+        padding-left: 0rem;
+    }
+    
+    .footer {
+        display: flex;
+        justify-content:space-between;
+        margin-top: 10px;
+    }
+
+    #questCount{
+        background-color: cornsilk;
+        color:black;
+        font-weight: 600;
+        padding:7px 5px;
+        text-align: center;
+        border-radius: 5px;
+
+    }
+    
+    .btn-skip, .btn-next {
+        background-image: linear-gradient(45deg, #84b36d, #76a540);
+        border-radius: 5px;
+        padding: 7px 15px;
+        color: rgb(0, 0, 0);
+        font-size: 20px;
+        margin-left: 10px;
+    }
+    
+    .btn-next:hover {
+        background-image: linear-gradient(45deg, #67b842, #80c92d);
+        border-radius: 5px;
+        padding: 7px 15px;
+        color: rgb(0, 0, 0);
+        font-size: 20px;
+    }
+    
+    /* @media only screen and (max-width: 768px) {
+        .box {
+            margin-top: 10vw;
+        }
+    } */

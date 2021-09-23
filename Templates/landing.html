@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <nav>
+        <div id="logo">
+            <a href="/"><img src="{% static '/img/NITM.png' %}" alt=""></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/leadership" id="navlink" class="navlink">LEADERBOARD</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+
+    <div class="container" style="padding-top: 8vw;">
+     
+        <div class="jumbotron" >
+            
+             
+            <h1 class="neon"><img src="{% static '/img/unnamed.jpg' %}" id="img" alt="">treasure hunt</h1>
+            <p class="font-weight-bolder">Caught inside a mystery,veiled in an engima,locked inside a riddle.....</p>
+        
+        </div>
+
+        <div class="content pt-3 pb-4 mb-4">
+            <h2>Instructions :</h2>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eos autem laborum ad Lorem ipsum dolor sit amet consectetur adipisicing </li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eos autem laborum ad Lorem ipsum dolor sit amet consectetur adipisicing </li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eos autem laborum ad Lorem ipsum dolor sit amet consectetur adipisicing</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eos autem laborum ad Lorem ipsum dolor sit amet consectetur adipisicing</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eos autem laborum ad Lorem ipsum dolor sit amet consectetur adipisicing</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eos autem laborum ad Lorem ipsum dolor sit amet consectetur adipisicing</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eos autem laborum ad Lorem ipsum dolor sit amet consectetur adipisicing</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eos autem laborum ad Lorem ipsum dolor sit amet consectetur adipisicing</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eos autem laborum ad Lorem ipsum dolor sit amet consectetur adipisicing</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eos autem laborum ad Lorem ipsum dolor sit amet consectetur adipisicing</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eos autem laborum ad Lorem ipsum dolor sit amet consectetur adipisicing</li>
+
+        </div>
+    </div>
+    <div id="design">
+        <input class="form-check-input" type="checkbox" value="" id="checkbox" onclick="checkMe()"/>
+        <label class="form-check-label" for="checkbox"> I have read and understood the above given Instructions.</label><br>
+
+    </div>
+    <div id="buttons">
+        <button type="button" id="signin"  class=" button"  ><a href="{% url 'signup' %}">SIGN UP</a></button>
+        <button type="button" id="signup"  class=" button"  ><a href="{% url 'login' %}">SIGN IN</a></button>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js " integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj " crossorigin="anonymous ">
+    </script>
+
+    <script src="{% static '/js/script.js' %}"></script>
+    <link rel="stylesheet" href="{% static '/css/landing.css' %}">
+
+{% endblock %}

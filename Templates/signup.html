@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <nav>
+        <div id="logo">
+            <a href="/"><img src="{% static '/img/NITM.png' %}" alt=""></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/leadership" id="navlink" class="navlink">LEADERBOARD</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <div class="container " style="padding-top: 8vw;">
+        <div class="jumbotron">
+            <h1 class="neon"> treasure hunt</h1>
+            <p class="font-weight-bolder">Caught inside a mystery,veiled in an engima,locked inside a riddle.....</p>
+        </div>
+        <div class="login">
+
+            <div class="form">
+                <div class="login">
+                    <div class="login-header">
+                        <div class="imgcontainer">
+                            <img src="{% static '/img/unnamed.jpg' %}"  alt="" class="logoimg">
+                        </div>
+                        <p id="text">
+                            Please enter your credentials to signup.
+                        </p>
+                    </div>
+                </div>
+                <form class="signup-form" method="POST" action="{% url 'signup' %}" >
+                    {% csrf_token %}
+                    <input type="text" placeholder="username" name="username" value="" required minlength="3"/>
+                    <input type="text" placeholder="Collage Email Id" name="email" value="" required/>
+                    <select id="year"  placeholder="year" name="year" value="" required>
+                        <option value="0">year</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                    <input type="password" placeholder="password" name="password" value="" required minlength="5"/>
+                    <button> signup</button>
+                </form>
+            </div>
+        </div>
+        </form>
+
+    </div>
+    <script src="{% static '/js/script.js' %}"></script>
+    <link rel="stylesheet" href="{% static '/css/signup.css' %}">
+{% endblock %}
+

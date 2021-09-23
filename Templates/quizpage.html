@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="quizpage.css">
+    <title>quizpage</title>
+</head>
+
+<body>
+    <div class="heading">
+    <h1 class="neon"><img src="unnamed.jpg" id="img" alt="">treasure hunt</h1></div>
+    <div class="box" id="questionScreen">
+        <div class="title">
+            Riddles:
+        </div>
+        <div class="header">
+            <div class="scoreBox inl-box">Score: <span id="score" class="score">0</span></div>
+            <div id="countdown" class="ul-rigth inl-box"> Time Off <span id="countdownTimer" class="time">30:00</span></div>
+        </div>
+        <div class="quiz_body">
+            <div id="questions">
+
+
+                <!-- <ul class="option_group">
+          <li class="option">option 1</li>
+          <li class="option">option 2</li>
+          <li class="option">option 3</li>
+          <li class="option">option 4</li>
+        </ul> -->
+            </div>
+        </div>
+        <div class="footer">
+            <div id="questCount"><span id="quesNo">1 </span>Out Of <span class="totalN0">20</span></div>
+            <div>
+                <button class="btn-skip inl-box" onclick=skip()>Skip </button>
+                <button class="btn-next inl-box" onclick=next()>Next </button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js " integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj " crossorigin="anonymous ">
+    </script>
+
+    <!-- questions.js -->
+    <script src="Question.js"></script>
+    <!-- timer -->
+    <!-- <script src="timer.js"></script> -->
+
+</body>
+
+</html>
