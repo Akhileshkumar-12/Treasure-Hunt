@@ -23,6 +23,15 @@
         <div class="login">
 
             <div class="form">
+                {% if messages %}
+                
+                {% for message in messages %}
+                <div class="alert alert-info">
+                    {{ message }}
+                </div>
+                {% endfor %}
+          
+                {% endif %}
                 <div class="login">
                     <div class="login-header">
                         <div class="imgcontainer">

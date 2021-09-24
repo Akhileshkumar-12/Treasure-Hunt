@@ -12,6 +12,36 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 def Landing(request):
     return render(request,'landing.html')
+
+def Login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user_obj = User.objects.filter(username = username).first()
+        if user_obj is None:
+            messages.success(request, 'User not found.')
+            return redirect('/Login')
+        
+        
+        # profile_obj = Profile.objects.filter(name = user_obj ).first()
+
+        # if not profile_obj.is_verified:
+        #     messages.success(request, 'Profile is not verified check your mail.')
+        #     return redirect('/Login')
+
+        user = authenticate(username = username , password = password)
+        if user is None:
+            messages.success(request, 'Wrong password.')
+            return redirect('/Login')
+        
+        login(request , user)
+        return redirect('/quiz')
+
+    return render(request , 'Login.html')
+    return render(request,'Login.html')
+
+
 def signup(request):
     if request.method == 'POST':
         name = request.POST.get('username')
@@ -32,41 +62,27 @@ def signup(request):
             user_obj.set_password(password)
             user_obj.save()
             auth_token = str(uuid.uuid4())
-            profile_obj = Profile.objects.create(name = user_obj , auth_token = auth_token)
+            profile_obj = Profile.objects.create(name = user_obj , auth_token = auth_token, password=password,email=email)
             profile_obj.save()
             
-            send_mail_after_registration(email , auth_token)
-            print("3")
-            return redirect('/token')
-           
+            # send_mail_after_registration(email , auth_token)
+            # print("3")
+            # return redirect('/token')
+            return render(request,'Login.html')
         except Exception as e:
             print(e)
     return render(request,'signup.html')
-def send_mail_after_registration(email , token):
-    print("akhil")
-    subject = 'Your accounts need to be verified'
-    message = f'Hi paste the link to verify your account http://127.0.0.1:8000/verify/{token}'
+# def send_mail_after_registration(email , token):
+#     print("akhil")
+#     subject = 'Your accounts need to be verified'
+#     message = f'Hi paste the link to verify your account http://127.0.0.1:8000/verify/{token}'
    
-    email_from = settings.EMAIL_HOST_USER
-    print(email_from)
-    recipient_list = [email]
-    print(recipient_list)
-    send_mail(subject, message , email_from ,recipient_list )
-    print(message)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#     email_from = settings.EMAIL_HOST_USER
+#     print(email_from)
+#     recipient_list = [email]
+#     print(recipient_list)
+#     send_mail(subject, message , email_from ,recipient_list )
+#     print(message)
 
 
 
@@ -75,26 +91,26 @@ def success(request):
     return render(request , 'success.html')
 
 
-def token_send(request):
-    return render(request , 'token.html')
+# def token_send(request):
+#     return render(request , 'token.html')
 
-def verify(request , auth_token):
-    try:
-        profile_obj = Profile.objects.filter(auth_token = auth_token).first()
+# def verify(request , auth_token):
+#     try:
+#         profile_obj = Profile.objects.filter(auth_token = auth_token).first()
     
-        if profile_obj:
-            if profile_obj.is_verified:
-                messages.success(request, 'Your account is already verified.')
-                return redirect('/login')
-            profile_obj.is_verified = True
-            profile_obj.save()
-            messages.success(request, 'Your account has been verified.')
-            return redirect('/login')
-        else:
-            return redirect('/error')
-    except Exception as e:
-        print(e)
-        return redirect('/signup')
+#         if profile_obj:
+#             if profile_obj.is_verified:
+#                 messages.success(request, 'Your account is already verified.')
+#                 return redirect('/Login')
+#             profile_obj.is_verified = True
+#             profile_obj.save()
+#             messages.success(request, 'Your account has been verified.')
+#             return redirect('/Login')
+#         else:
+#             return redirect('/error')
+#     except Exception as e:
+#         print(e)
+#         return redirect('/signup')
 
 def error_page(request):
     return  render(request , 'error.html')
@@ -107,7 +123,11 @@ def error_page(request):
 
 
 
-def login(request):
-    return render(request,'login.html')
+
 def leadership(request):
     return render(request,'leaderboard.html')
+
+def quiz(request):
+    name=request.user.username
+    print(name)
+    return render(request,'quizpage.html')
