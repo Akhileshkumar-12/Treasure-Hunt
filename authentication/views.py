@@ -8,7 +8,9 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse, HttpResponseRedirect
+from localStoragePy import localStoragePy
 # Create your views here.
 def Landing(request):
     return render(request,'landing.html')
@@ -63,8 +65,13 @@ def signup(request):
             user_obj.save()
             auth_token = str(uuid.uuid4())
             profile_obj = Profile.objects.create(name = user_obj , auth_token = auth_token, password=password,email=email)
-            profile_obj.save()
-            
+            p=Profile()
+            p.name=name
+            p.email=email
+            p.password=password
+            p.Year=Year
+            p.save()
+            print("aman")
             # send_mail_after_registration(email , auth_token)
             # print("3")
             # return redirect('/token')
@@ -123,11 +130,25 @@ def error_page(request):
 
 
 
-
+@login_required(login_url='/Login')
 def leadership(request):
+    user=request.user
+    print(user.username)
     return render(request,'leaderboard.html')
-
+@login_required(login_url='/Login')
 def quiz(request):
-    name=request.user.username
-    print(name)
-    return render(request,'quizpage.html')
+    # name=request.user.username
+    # print(name)
+    list=[]
+    problems=McqProblems.objects.all()
+    for i in problems:
+        list.append(i)
+    print(list)
+    return render(request,'quizpage.html',{'list':list})
+
+@login_required(login_url='/Login')
+def Logout(request):
+    logout(request)
+    print("aman")
+    #localStorage.setItem("type","")
+    return HttpResponseRedirect('/')

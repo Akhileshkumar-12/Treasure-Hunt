@@ -8,14 +8,48 @@
         <ul class="nav-links">
             <li><a href="/leadership" id="navlink" class="navlink">LEADERBOARD</a></li>
         </ul>
+
+        {% if user.is_authenticated %}
+        <div class="dropdown navlink">
+            <button class="dropbtn navlink"> {{ request.user.username }}</button>
+            <div class="dropdown-content">
+              <a href="/logout">Logout</a>
+            </div>
+          </div>
+        <!-- <div class="btn-group">
+            <button type="button" class="btn btn-danger">Action</button>
+            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </div> -->
+        <!-- <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ request.user.username }}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/logout">Logout</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div> -->
+        {% else %}
+        <a href="{% url 'Login' %}" class="navlink"
+                id=""
+                 >Login</a>
+        {% endif %}
         <div class="burger">
             <div class="line1"></div>
             <div class="line2"></div>
             <div class="line3"></div>
         </div>
     </nav>
-
-
     <div class="container" style="padding-top: 8vw;">
      
         <div class="jumbotron" >
@@ -48,8 +82,7 @@
 
     </div>
     <div id="buttons">
-        <button type="button" id="signin"  class=" button"  ><a href="{% url 'signup' %}">SIGN UP</a></button>
-        <button type="button" id="signup"  class=" button"  ><a href="{% url 'Login' %}">SIGN IN</a></button>
+        <button type="button" id="signin"  class="button"  ><a href="{% url 'quiz' %}">Start Test</a></button>
     </div>
     </div>
 

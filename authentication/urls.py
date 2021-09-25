@@ -13,6 +13,7 @@ urlpatterns = [
     path('success' , views.success , name='success'),
     # path('verify/<auth_token>' , views.verify , name="verify"),
     path('error' , views.error_page , name="error"),
-    path('quiz',views.quiz,name="quiz")
+    path('quiz',views.quiz,name="quiz"),
+    path('logout', views.Logout, name='logout'),
     
 ]

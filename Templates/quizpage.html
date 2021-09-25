@@ -12,15 +12,16 @@
             <div id="countdown" class="ul-rigth inl-box"> Time Off <span id="countdownTimer" class="time">30:00</span></div>
         </div>
         <div class="quiz_body">
-            <div id="questions">
-
-
-                <!-- <ul class="option_group">
-          <li class="option">option 1</li>
-          <li class="option">option 2</li>
-          <li class="option">option 3</li>
-          <li class="option">option 4</li>
-        </ul> -->
+            <div id="">
+          {% for i in list%}
+          <h5>{{i.question}}</h5>
+         <ul class="option_group">
+          <li class="option">{{i.optiona}}</li>
+          <li class="option">{{i.optionb}}</li>
+          <li class="option">{{i.optionc}}</li>
+          <li class="option">{{i.optiond}}</li>
+        </ul>
+        {% endfor %}
             </div>
         </div>
         <div class="footer">

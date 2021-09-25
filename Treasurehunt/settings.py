@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Quizapp',
-    'authentication'
-
+    'authentication',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'Treasurehunt.urls'
@@ -134,7 +136,9 @@ STATICFILES_DIRS =[
 ] 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
