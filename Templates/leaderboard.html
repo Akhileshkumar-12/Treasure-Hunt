@@ -17,6 +17,9 @@
     </nav>
 
     <!-- *********leaderboard section******************* -->
+    <!-- {% for i in list%}
+    <h1>mayank</h1>
+    {% endfor %} -->
     <div class="l-wrapper">
         <div class="l-grid">
             <div class="l-grid__item l-grid__item--sticky">
@@ -57,11 +60,26 @@
                     <ul class="c-list" id="list">
                       <li class="c-list__item">
                         <div class="c-list__grid">
-                          <div class="u-text--left  u-text--medium">RANK</div>
+ 
                           <div class="u-text--left u-text--medium" style="margin-left: 20px;">HUNTER</div>
                           <div class="u-text--right u-text--medium">SCORE</div>
-                          <div class="u-text--right u-text--medium">TIME TAKEN</div>
                         </div>
+                        {% for i in list%}
+                        <!-- <h1>{{i.is_verified}}</h1> -->
+                        <li class="c-list__item">
+                        <div class="c-media">
+                          <div class="c-media__content">
+                            <div class="c-media__title">{{i.name.username}}</div>
+                          </div>
+                        </div>
+                        <div class="u-text--right c-score">
+                          <div class="u-mt--8">
+                            <strong>{{i.score}}</strong>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                      {% endfor %}
                       </li>
                     </ul>
                   </div>
@@ -69,11 +87,14 @@
               </div>
             </div>
           </div>
+          {% if list %}
+          <h1>mayank</h1>
+          {% endif %}
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js " integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj " crossorigin="anonymous ">
     </script>
 
-<script src="{% static '/js/leaderboard.js' %}"></script>
+<!-- <script src="{% static '/js/leaderboard.js' %}"></script> -->
 <link rel="stylesheet" href="{% static '/css/leaderboard.css' %}">
 {% endblock %}

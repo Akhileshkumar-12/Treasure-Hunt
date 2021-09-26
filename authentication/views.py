@@ -135,8 +135,13 @@ def error_page(request):
 @login_required(login_url='/Login')
 def leadership(request):
     user=request.user
-    print(user.username)
-    return render(request,'leaderboard.html')
+    # p=Profile.objects.get(name=user)
+    # score=p.score
+    p=Profile.objects.all()
+    p=p.order_by('-score')
+    for i in p:
+        print(i.name.username)
+    return render(request,'leaderboard.html',{'list':p})
 @login_required(login_url='/Login')
 def quiz(request):
     # name=request.user.username
