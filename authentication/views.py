@@ -143,15 +143,9 @@ def quiz(request):
     # print(name)
     user=request.user
     p=Profile.objects.get(name=user)
-   # print(p.is_verified)
-   # print("aman")
-    #print(p)
-    # p.is_verified=True
-    # p.save()
-   # print(p.is_verified)
     k=p.is_verified
-    if k==True:
-        return render(request,'finish.html')
+    # if k==True:
+        # return render(request,'finish.html')
     p.is_verified=True
     #p.name=user
     p.save()
@@ -179,31 +173,29 @@ def score(request,pk):
         print('selcted an',op1)
         problems=McqProblems.objects.all()
         op1=int(op1)
-        # count=0
-        # user=request.user
-        # m=McqSubmissions()
-        # p=Profile(name=user)
-        # if(pk=='None'):
-        #     count=1
-        # else:
-        #     count=int(pk)
-        # l=0
-        # for i in problems:
-        #     l=l+1
-        #     if count==l:
-        #         m.question=i
-        #         m.submitted_output=op1  
-        #         if op1==i.correct_ans:
-        #             m.result=1
-        #             d=p.score
-        #             p.score=d+1
-        #         else:
-        #             m.result=0
-        # m.user=p
-        # p.save()
-        # m.save()
-        
-    
+        count=0
+        user=request.user
+        m=McqSubmissions()
+        p=Profile.objects.get(name=user)
+        if(pk=='None'):
+            count=1
+        else:
+            count=int(pk)
+        l=0
+        for i in problems:
+            l=l+1
+            if count==l:
+                m.question=i
+                m.submitted_output=op1 
+                if op1==i.correct_ans:
+                    m.result=True
+                    d=p.score
+                    p.score=d+1
+                else:
+                    m.result=False
+        p.save()
+        m.user=p
+        m.save()
     if(pk=='None'):
         pk='2'
     else:
@@ -216,7 +208,9 @@ def score(request,pk):
     k=int(pk)
     # print(k)
     if l<k:
-        #print('amam')
+        p=Profile.objects.get(name=user)
+        print('score')
+        print(p.score)
         return render(request,'finish.html')
     #paginator=Paginator(problems,1)
     page_obj=paginator.get_page(pk)
