@@ -1,4 +1,5 @@
 
+from django.core import paginator
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -11,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from localStoragePy import localStoragePy
+from django.core.paginator import Paginator
 # Create your views here.
 def Landing(request):
     return render(request,'landing.html')
@@ -65,12 +67,12 @@ def signup(request):
             user_obj.save()
             auth_token = str(uuid.uuid4())
             profile_obj = Profile.objects.create(name = user_obj , auth_token = auth_token, password=password,email=email)
-            p=Profile()
-            p.name=name
-            p.email=email
-            p.password=password
-            p.Year=Year
-            p.save()
+            # p=Profile()
+            # p.name=request.user.username
+            # p.email=email
+            # p.password=password
+            # p.Year=Year
+            profile_obj.save()
             print("aman")
             # send_mail_after_registration(email , auth_token)
             # print("3")
@@ -139,12 +141,28 @@ def leadership(request):
 def quiz(request):
     # name=request.user.username
     # print(name)
+    print('aman')
+    if request.method=='POST':
+        op1=request.POST['1']
+        # op2=request.POST['2']
+        # op3=request.POST['3']
+        # op4=request.POST['4']
+        print(op1)
+        #print("aman")
+        # print(op2)
+        # print(op3)
+        # print(op3)
     list=[]
     problems=McqProblems.objects.all()
-    for i in problems:
-        list.append(i)
-    print(list)
-    return render(request,'quizpage.html',{'list':list})
+    paginator=Paginator(problems,1)
+    page_number=request.GET.get('page')
+    page_obj=paginator.get_page(page_number)
+    print(page_number)
+    print(page_obj)
+    # for i in problems:
+    #     list.append(i)
+    # print(list)
+    return render(request,'quizpage.html',{'page_obj':page_obj,'page_number':page_number})
 
 @login_required(login_url='/Login')
 def Logout(request):
@@ -152,3 +170,38 @@ def Logout(request):
     print("aman")
     #localStorage.setItem("type","")
     return HttpResponseRedirect('/')
+def score(request,pk):
+    #print('aman')
+    if request.method=='POST':
+        op1=request.POST['1']
+        # op2=request.POST['2']
+        # op3=request.POST['3']
+        # op4=request.POST['4']
+        print(op1)
+        #print("aman")
+        # print(op2)
+        # print(op3)
+        # print(op3)
+    list=[]
+    if(pk=='None'):
+        pk='2'
+    else:
+        pk=int(pk)+1
+        pk=str(pk)
+    problems=McqProblems.objects.all()
+    l=problems.__len__()
+    print(l)
+    k=int(pk)
+    print(k)
+    if l<k:
+        print('amam')
+        return render(request,'landing.html')
+    paginator=Paginator(problems,1)
+    page_obj=paginator.get_page(pk)
+     
+    #print(pk)
+    print(page_obj)
+    # for i in problems:
+    #     list.append(i)
+    # print(list)
+    return render(request,'quizpage.html',{'page_obj':page_obj,'page_number':pk})

@@ -13,22 +13,33 @@
         </div>
         <div class="quiz_body">
             <div id="">
-          {% for i in list%}
-          <h5>{{i.question}}</h5>
-         <ul class="option_group">
-          <li class="option">{{i.optiona}}</li>
-          <li class="option">{{i.optionb}}</li>
-          <li class="option">{{i.optionc}}</li>
-          <li class="option">{{i.optiond}}</li>
+                <form action="{% url 'score' pk=page_number %}" method="post">
+                    {% csrf_token %}
+                    {% for i in page_obj%}
+                    <h5>{{i.question}}</h5>
+                   <ul class="option_group">
+
+                    <li class="option"><input type="radio" name='1' id='1' value="1">{{i.optiona}}</li>
+                    <li class="option"><input type="radio" name='1' id='2' value="2">{{i.optionb}}</li>
+                    <li class="option"><input type="radio" name='1' id='3' value="3">{{i.optionc}}</li>
+                    <li class="option"><input type="radio" name='1' id='4' value="4">{{i.optiond}}</li>
+                    <!-- <button class="btn-skip inl-box" onclick=skip()>Skip </button> -->
+                    <input type="submit" value="Submit" class="btn-skip inl-box" style="align-items: center;">
+                </form>
+
         </ul>
         {% endfor %}
             </div>
         </div>
         <div class="footer">
-            <div id="questCount"><span id="quesNo">1 </span>Out Of <span class="totalN0">20</span></div>
+            <div id="questCount"><span id="quesNo">{{page_obj.number}}</span> Out Of <span class="totalN0">20</span></div>
             <div>
-                <button class="btn-skip inl-box" onclick=skip()>Skip </button>
-                <button class="btn-next inl-box" onclick=next()>Next </button>
+
+                <!-- <span style="color:black">{{page_obj.number}}</span> -->
+                {% if page_obj.has_next %}
+                <!-- <button class="btn-skip inl-box" href="?page={{page_obj.next_page_number}}">Skip </button> -->
+                <a class="btn-skip inl-box"  href="?page={{page_obj.next_page_number}}">Next </a>
+                {% endif %}
             </div>
         </div>
     </div>

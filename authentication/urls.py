@@ -15,5 +15,5 @@ urlpatterns = [
     path('error' , views.error_page , name="error"),
     path('quiz',views.quiz,name="quiz"),
     path('logout', views.Logout, name='logout'),
-    
+    path('score/<slug:pk>/',views.score,name='score'),
 ]
