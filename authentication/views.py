@@ -141,18 +141,20 @@ def leadership(request):
 def quiz(request):
     # name=request.user.username
     # print(name)
-    print('aman')
-    if request.method=='POST':
-        op1=request.POST['1']
-        # op2=request.POST['2']
-        # op3=request.POST['3']
-        # op4=request.POST['4']
-        print(op1)
-        #print("aman")
-        # print(op2)
-        # print(op3)
-        # print(op3)
-    list=[]
+    user=request.user
+    p=Profile.objects.get(name=user)
+   # print(p.is_verified)
+   # print("aman")
+    #print(p)
+    # p.is_verified=True
+    # p.save()
+   # print(p.is_verified)
+    k=p.is_verified
+    if k==True:
+        return render(request,'finish.html')
+    p.is_verified=True
+    #p.name=user
+    p.save()
     problems=McqProblems.objects.all()
     paginator=Paginator(problems,1)
     page_number=request.GET.get('page')
@@ -174,29 +176,49 @@ def score(request,pk):
     #print('aman')
     if request.method=='POST':
         op1=request.POST['1']
-        # op2=request.POST['2']
-        # op3=request.POST['3']
-        # op4=request.POST['4']
-        print(op1)
-        #print("aman")
-        # print(op2)
-        # print(op3)
-        # print(op3)
-    list=[]
+        print('selcted an',op1)
+        problems=McqProblems.objects.all()
+        op1=int(op1)
+        # count=0
+        # user=request.user
+        # m=McqSubmissions()
+        # p=Profile(name=user)
+        # if(pk=='None'):
+        #     count=1
+        # else:
+        #     count=int(pk)
+        # l=0
+        # for i in problems:
+        #     l=l+1
+        #     if count==l:
+        #         m.question=i
+        #         m.submitted_output=op1  
+        #         if op1==i.correct_ans:
+        #             m.result=1
+        #             d=p.score
+        #             p.score=d+1
+        #         else:
+        #             m.result=0
+        # m.user=p
+        # p.save()
+        # m.save()
+        
+    
     if(pk=='None'):
         pk='2'
     else:
         pk=int(pk)+1
         pk=str(pk)
     problems=McqProblems.objects.all()
-    l=problems.__len__()
-    print(l)
-    k=int(pk)
-    print(k)
-    if l<k:
-        print('amam')
-        return render(request,'landing.html')
     paginator=Paginator(problems,1)
+    l=problems.__len__()
+    # print(l)
+    k=int(pk)
+    # print(k)
+    if l<k:
+        #print('amam')
+        return render(request,'finish.html')
+    #paginator=Paginator(problems,1)
     page_obj=paginator.get_page(pk)
      
     #print(pk)
