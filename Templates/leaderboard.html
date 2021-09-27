@@ -21,18 +21,18 @@
     <h1>mayank</h1>
     {% endfor %} -->
     <div class="l-wrapper">
-        <div class="l-grid">
-            <div class="l-grid__item l-grid__item--sticky">
+        <div class="row">
+            <div class="col-5 l-grid__item--sticky">
               <div class="c-card u-bg--light-gradient u-text--dark">
                 <div class="c-card__body">
                   <div class="u-display--flex u-justify--space-between">
                     <div class="u-text--left">
                       <div class="u-text--small">My Rank</div>
-                      <h2>3rd Place</h2>
+                      <h2>{{myrank}} Place</h2>
                     </div>
                     <div class="u-text--right">
                       <div class="u-text--small">My Score</div>
-                      <h2>91</h2>
+                      <h2>{{myscore}}</h2>
                     </div>
                   </div>
                 </div>
@@ -54,42 +54,31 @@
                 </div>
               </div>
             </div>
-            <div class="l-grid__item">
-                <div class="c-card">
-                  <div class="c-card__body">
-                    <ul class="c-list" id="list">
-                      <li class="c-list__item">
-                        <div class="c-list__grid">
- 
-                          <div class="u-text--left u-text--medium" style="margin-left: 20px;">HUNTER</div>
-                          <div class="u-text--right u-text--medium">SCORE</div>
-                        </div>
-                        {% for i in list%}
-                        <!-- <h1>{{i.is_verified}}</h1> -->
-                        <li class="c-list__item">
-                        <div class="c-media">
-                          <div class="c-media__content">
-                            <div class="c-media__title">{{i.name.username}}</div>
-                          </div>
-                        </div>
-                        <div class="u-text--right c-score">
-                          <div class="u-mt--8">
-                            <strong>{{i.score}}</strong>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                      {% endfor %}
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+            <div class="col-7">
+              <table class="table table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in list %}
+                  <tr>
+                    <th scope="row">{{ i.id }}</th>
+                    <td>{{ i.name.username}}</td>
+                    <td>{{ i.score }} </td>
+                    
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
             </div>
           </div>
-          {% if list %}
-          <h1>mayank</h1>
-          {% endif %}
+          </div>
+          
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js " integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj " crossorigin="anonymous ">

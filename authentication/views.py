@@ -11,7 +11,7 @@ from django.contrib.auth import authenticate,login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
-from localStoragePy import localStoragePy
+# from localStoragePy import localStoragePy
 from django.core.paginator import Paginator
 # Create your views here.
 def Landing(request):
@@ -139,9 +139,19 @@ def leadership(request):
     # score=p.score
     p=Profile.objects.all()
     p=p.order_by('-score')
+    j=1
+    myscore=0
+    myrank=1
+    for i in p:
+        i.id=j
+        j+=1
+        if i.name==user:
+            myrank=i.id
+            myscore=i.score
+    print(myscore)
     for i in p:
         print(i.name.username)
-    return render(request,'leaderboard.html',{'list':p})
+    return render(request,'leaderboard.html',{'list':p,'myrank':myrank,'myscore':myscore})
 @login_required(login_url='/Login')
 def quiz(request):
     # name=request.user.username
