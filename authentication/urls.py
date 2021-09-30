@@ -16,4 +16,5 @@ urlpatterns = [
     path('quiz',views.quiz,name="quiz"),
     path('logout', views.Logout, name='logout'),
     path('score/<slug:pk>/',views.score,name='score'),
+    path('finish', views.finish, name='finish'),
 ]

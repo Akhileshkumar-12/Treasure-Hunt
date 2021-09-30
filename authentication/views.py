@@ -13,6 +13,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 # from localStoragePy import localStoragePy
 from django.core.paginator import Paginator
+import datetime
+
 # Create your views here.
 def Landing(request):
     return render(request,'landing.html')
@@ -170,10 +172,24 @@ def quiz(request):
     page_obj=paginator.get_page(page_number)
     print(page_number)
     print(page_obj)
+    ob=Event.objects.all()
+    today=datetime.datetime.now()
+    print(today)
+    # obj1=Event()
+    # for i in ob:
+    #     obj1=i
+    #     break
+    # print(obj1)
+    for i in ob:
+        today=i.When
+        break
+    print('aman')
+    print(today)
+    #return render(request,'jaya.html',{'ob':ob})
     # for i in problems:
     #     list.append(i)
     # print(list)
-    return render(request,'quizpage.html',{'page_obj':page_obj,'page_number':page_number})
+    return render(request,'quizpage.html',{'page_obj':page_obj,'page_number':page_number,'ob':today})
 
 @login_required(login_url='/Login')
 def Logout(request):
@@ -229,10 +245,25 @@ def score(request,pk):
         return render(request,'finish.html')
     #paginator=Paginator(problems,1)
     page_obj=paginator.get_page(pk)
-     
+    ob=Event.objects.all()
+    today=datetime.datetime.now()
+    print(today)
+    # obj1=Event()
+    # for i in ob:
+    #     obj1=i
+    #     break
+    # print(obj1)
+    for i in ob:
+        today=i.When
+        break
+    print('aman')
+    print(today)
     #print(pk)
     print(page_obj)
     # for i in problems:
     #     list.append(i)
     # print(list)
-    return render(request,'quizpage.html',{'page_obj':page_obj,'page_number':pk})
+    return render(request,'quizpage.html',{'page_obj':page_obj,'page_number':pk,'ob':today})
+
+def finish(request):
+    return render(request,'finish.html')

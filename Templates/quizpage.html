@@ -3,13 +3,14 @@
 {% block content %}
     <div class="heading">
     <h1 class="neon"><img src="{% static '/img/unnamed.jpg' %}" id="img" alt="">treasure hunt</h1></div>
-    <div class="box" id="questionScreen">
+      <div id="event-box" style="display: none;">{{ob|date:"M d,Y H:m:s"}}</div>
+ 
         <div class="title">
             Riddles:
         </div>
         <div class="header">
             <!-- <div class="scoreBox inl-box">Score: <span id="score" class="score">0</span></div> -->
-            <div id="countdown" class="ul-rigth inl-box"> Time Off </div>
+            <div id="countdown" class="ul-rigth inl-box"> Time Off <span id="countdown-box" class="time"></span></div>
         </div>
         <div class="quiz_body">
             <div id="">
@@ -24,7 +25,7 @@
                     <li class="option"><input type="radio" name='1' id='3' value="3">{{i.optionc}}</li>
                     <li class="option"><input type="radio" name='1' id='4' value="4">{{i.optiond}}</li>
                     <!-- <button class="btn-skip inl-box" onclick=skip()>Skip </button> -->
-                    <input type="submit" value="Submit" class="btn-skip inl-box" style="align-items: center;">
+                    <input type="submit" value="Submit" class="btn-skip inl-box" id="show" style="align-items: center;">
                 </form>
 
         </ul>
@@ -37,8 +38,9 @@
 
                 <!-- <span style="color:black">{{page_obj.number}}</span> -->
                 {% if page_obj.has_next %}
-                <!-- <button class="btn-skip inl-box" href="?page={{page_obj.next_page_number}}">Skip </button> -->
-                <a class="btn-skip inl-box"  href="?page={{page_obj.next_page_number}}">Next </a>
+
+                <a class="btn-skip inl-box" id="show1"  href="?page={{page_obj.next_page_number}}">Next </a>
+                <a class="btn-skip inl-box"  href="{% url 'finish' %}">Finish</a>
                 {% endif %}
             </div>
         </div>
@@ -52,6 +54,7 @@
 
     <!-- questions.js -->
     <script src="{% static '/js/Question.js' %}"></script>
+ 
     <link rel="stylesheet" href="{% static '/css/quizpage.css' %}">
     <!-- timer -->
     <!-- <script src="timer.js"></script> -->
