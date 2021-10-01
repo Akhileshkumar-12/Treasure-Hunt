@@ -130,10 +130,6 @@ def error_page(request):
 
 
 
-
-
-
-
 @login_required(login_url='/Login')
 def leadership(request):
     user=request.user
@@ -161,8 +157,8 @@ def quiz(request):
     user=request.user
     p=Profile.objects.get(name=user)
     k=p.is_verified
-    # if k==True:
-        # return render(request,'finish.html')
+    if k==True:
+        return render(request,'finish.html')
     p.is_verified=True
     #p.name=user
     p.save()
@@ -200,6 +196,7 @@ def Logout(request):
 def score(request,pk):
     #print('aman')
     if request.method=='POST':
+
         op1=request.POST['1']
         print('selcted an',op1)
         problems=McqProblems.objects.all()
@@ -217,8 +214,11 @@ def score(request,pk):
             l=l+1
             if count==l:
                 m.question=i
+                verify=McqSubmissions.objects.filter(question=i)
+                if verify:
+                    return render(request,'finish.html')
                 m.submitted_output=op1 
-                if op1==i.correct_ans:
+                if op1==i.correct_ans :
                     m.result=True
                     d=p.score
                     p.score=d+1
@@ -227,6 +227,7 @@ def score(request,pk):
         p.save()
         m.user=p
         m.save()
+    
     if(pk=='None'):
         pk='2'
     else:

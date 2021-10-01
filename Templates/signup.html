@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<body style="background-image: url('static/img/1.jpg');">
     <nav>
         <div id="logo">
             <a href="/"><img src="{% static '/img/NITM.png' %}" alt=""></a>
@@ -62,5 +63,6 @@
     </div>
     <script src="{% static '/js/script.js' %}"></script>
     <link rel="stylesheet" href="{% static '/css/signup.css' %}">
+    </body>
 {% endblock %}
 

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
+<body style="background-image: url('static/img/1.jpg');">
     <nav>
         <div id="logo">
             <a href="/"><img src="{% static '/img/NITM.png' %}"alt=""></a>
@@ -37,7 +37,7 @@
                   </div>
                 </div>
               </div>
-              <div class="c-card">
+              <!-- <div class="c-card">
                 <div class="c-card__body" id="report">
                   <div class="u-text--center" id="winner"></div>
                   <div class="u-display--flex u-text--center flex-column">
@@ -52,7 +52,7 @@
                       </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
             <div class="col-7">
               <table class="table table-dark">
@@ -86,4 +86,5 @@
 
 <!-- <script src="{% static '/js/leaderboard.js' %}"></script> -->
 <link rel="stylesheet" href="{% static '/css/leaderboard.css' %}">
+</body>
 {% endblock %}

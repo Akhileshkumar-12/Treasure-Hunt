@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<body style="background-image: url('static/img/1.jpg');">
     <nav>
         <div id="logo">
             <a href="/"><img src="{% static '/img/NITM.png' %}"  alt=""></a>
@@ -20,10 +21,12 @@
             <h1 class="neon"> treasure hunt</h1>
             <p class="font-weight-bolder">Caught inside a mystery,veiled in an engima,locked inside a riddle.....</p>
         </div>
-        <h1>Thanks for your Submission</h1>
+        <h2 style="text-align: center; color:rgb(138, 236, 10);">Thanks for your Submission</h2>
 
 
     </div>
     <script src="{% static '/js/script.js' %}"></script>
     <link rel="stylesheet" href="{% static '/css/login.css' %}">
+    </body>
+
 {% endblock %}
