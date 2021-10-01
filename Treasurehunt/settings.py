@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2&8*w#928xkplu9(cho4pn6ghob%n*8y9qky0t!s5tzb8c1ytk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get("DEBUG",False))
 
 ALLOWED_HOSTS = []
 
@@ -150,6 +150,6 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mayankjh05@gmail.com'
 EMAIL_HOST_PASSWORD = 'Aman572000'
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Activate Django-Heroku.
 django_heroku.settings(locals())
