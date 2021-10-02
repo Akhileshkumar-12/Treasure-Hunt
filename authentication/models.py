@@ -31,7 +31,7 @@ class McqSubmissions(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     question = models.ForeignKey(McqProblems, on_delete=models.CASCADE)
     submitted_output = models.IntegerField(default=0)
-    result = models.NullBooleanField(default=None, null=True)
+    result = models.BooleanField(default=None, null=True)
 
 
 class Contests(models.Model):
