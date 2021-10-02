@@ -24,9 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2&8*w#928xkplu9(cho4pn6ghob%n*8y9qky0t!s5tzb8c1ytk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['treasurehunt-nitm.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Application definition
