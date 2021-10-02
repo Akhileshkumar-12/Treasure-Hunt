@@ -79,7 +79,7 @@ def signup(request):
             # send_mail_after_registration(email , auth_token)
             # print("3")
             # return redirect('/token')
-            return render(request,'Login.html')
+            return render(request,'login.html')
         except Exception as e:
             print(e)
     return render(request,'signup.html')
