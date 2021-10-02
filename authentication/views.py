@@ -44,8 +44,8 @@ def Login(request):
         login(request , user)
         return redirect('/quiz')
 
-    return render(request , 'Login.html')
-    return render(request,'Login.html')
+    return render(request , 'login.html')
+    # return render(request,'Login.html')
 
 
 def signup(request):
