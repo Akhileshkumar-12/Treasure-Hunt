@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-2&8*w#928xkplu9(cho4pn6ghob%n*8y9qky0t!s5tzb8c1ytk
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['.herokuapp.com']
-# ALLOWED_HOSTS = ['treasurehunt-nitm.herokuapp.com', 'localhost', '127.0.0.1']
+
+ALLOWED_HOSTS = ['treasurehunt-nitm.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -137,18 +137,19 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'mayankjh05@gmail.com'
-EMAIL_HOST_PASSWORD = 'Aman572000'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# Activate Django-Heroku.
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'mayankjh05@gmail.com'
+# EMAIL_HOST_PASSWORD = 'Aman572000'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# # Activate Django-Heroku.
 django_heroku.settings(locals())
