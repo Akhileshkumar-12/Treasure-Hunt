@@ -5,7 +5,7 @@
 <div class="heading">
     <h1 class="neon"><img src="{% static '/img/unnamed.jpg' %}" id="img" alt="">treasure hunt</h1>
 </div>
-<div>{{ob|date:"M d,Y H:m:s"}}</div>
+<!-- <div>{{ob|date:"M d,Y H:m:s"}}</div> -->
 <div id="event-box" style="display: none;">{{ob|date:"M d,Y H:m:s"}}</div>
 
 <div class="box" id="questionScreen">
@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="footer">
-        <div id="questCount"><span id="quesNo">{{page_obj.number}}</span> Out Of <span class="totalN0">20</span></div>
+        <div id="questCount"><span id="quesNo">{{page_obj.number}}</span> Out Of <span class="totalN0">10</span></div>
         <div>
 
             <!-- <span style="color:black">{{page_obj.number}}</span> -->

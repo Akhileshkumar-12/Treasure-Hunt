@@ -214,7 +214,7 @@ def score(request,pk):
             l=l+1
             if count==l:
                 m.question=i
-                verify=McqSubmissions.objects.filter(question=i)
+                verify=McqSubmissions.objects.filter(user=p,question=i)
                 if verify:
                     return render(request,'finish.html')
                 m.submitted_output=op1 
